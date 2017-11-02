@@ -1,12 +1,3 @@
-# Docker Node/Composer Image
-This image is based on the narwhaldigital:node image and adds the following:
-* PHP7
-* composer
-* curl
-* wget
+# WP Post Meta
 
-## Building Image
-From the repo directory run the following:
-`docker build -t narwhaldigital/node-composer .`
-
-Once built, push using `docker push narwhaldigital/node-composer:latest`
+A library to simplify manipulation of post meta in WordPress.

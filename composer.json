@@ -1,6 +1,6 @@
 {
   "name": "dfwood/wp-post-meta",
-  "description": "",
+  "description": "A library to simplify manipulation of post meta in WordPress.",
   "type": "library",
   "homepage": "https://github.com/dfwood/wp-post-meta",
   "authors": [
