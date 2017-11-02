@@ -13,5 +13,10 @@
   ],
   "support": {
     "source": "https://github.com/dfwood/wp-post-meta"
+  },
+  "autoload": {
+    "psr-4": {
+      "dfwood\\WordPress\\": ""
+    }
   }
 }
