@@ -1,0 +1,16 @@
+{
+  "name": "dfwood/wp-post-meta",
+  "description": "",
+  "type": "library",
+  "homepage": "https://github.com/dfwood/wp-post-meta",
+  "authors": [
+    {
+      "name": "David Wood",
+      "email": "david@davidwood.ninja",
+      "homepage": "https://davidwood.ninja/"
+    }
+  ],
+  "support": {
+    "source": "https://github.com/dfwood/wp-post-meta"
+  }
+}
