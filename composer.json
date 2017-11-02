@@ -1,6 +1,7 @@
 {
   "name": "dfwood/wp-post-meta",
   "description": "A library to simplify manipulation of post meta in WordPress.",
+  "license": "GPLv3",
   "type": "library",
   "homepage": "https://github.com/dfwood/wp-post-meta",
   "authors": [
