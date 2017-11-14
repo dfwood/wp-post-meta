@@ -64,17 +64,17 @@ class PostMeta {
 				if ( 1 === count( $values ) ) {
 					// If only 1 value, allow an existing value (if any) to be overwritten. Use `reset()` to ensure the correct value is retrieved.
 					if ( $isRevision ) {
-						update_metadata( 'post', $destinationId, $key, maybe_unserialize( reset( $values ) ) );
+						update_metadata( 'post', $destinationId, $key, self::_preparePostMetaData( reset( $values ) ) );
 					} else {
-						update_post_meta( $destinationId, $key, maybe_unserialize( reset( $values ) ) );
+						update_post_meta( $destinationId, $key, self::_preparePostMetaData( reset( $values ) ) );
 					}
 				} else {
 					// Otherwise, use add_post_meta as there are multiple values with the same key.
 					foreach ( $values as $value ) {
 						if ( $isRevision ) {
-							add_metadata( 'post', $destinationId, $key, maybe_unserialize( $value ) );
+							add_metadata( 'post', $destinationId, $key, self::_preparePostMetaData( $value ) );
 						} else {
-							add_post_meta( $destinationId, $key, maybe_unserialize( $value ) );
+							add_post_meta( $destinationId, $key, self::_preparePostMetaData( $value ) );
 						}
 					}
 				}
@@ -128,6 +128,22 @@ class PostMeta {
 				}
 			}
 		}
+	}
+
+	/**
+	 * Prepares post meta values to be passed to `add/update_metadata()`. Ensures data has proper slashing.
+	 *
+	 * @param mixed $data
+	 *
+	 * @return mixed
+	 */
+	protected static function _preparePostMetaData( $data ) {
+		$data = maybe_unserialize( $data );
+		if ( is_string( $data ) || is_array( $data ) ) {
+			$data = wp_slash( $data );
+		}
+
+		return $data;
 	}
 
 }
