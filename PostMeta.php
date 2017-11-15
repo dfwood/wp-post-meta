@@ -133,14 +133,26 @@ class PostMeta {
 	/**
 	 * Prepares post meta values to be passed to `add/update_metadata()`. Ensures data has proper slashing.
 	 *
+	 * Based on WordPress' `wp_slash()` function, but improves on the functionality to fix issues encountered when an
+	 * array contains an object.
+	 *
 	 * @param mixed $data
 	 *
 	 * @return mixed
 	 */
 	protected static function _preparePostMetaData( $data ) {
 		$data = maybe_unserialize( $data );
-		if ( is_string( $data ) || is_array( $data ) ) {
-			$data = wp_slash( $data );
+		if ( is_array( $data ) ) {
+			foreach ( $data as $k => $v ) {
+				if ( is_array( $v ) ) {
+					$data[ $k ] = self::_preparePostMetaData( $v );
+				} elseif ( is_string( $v ) ) {
+					$data[ $k ] = addslashes( $v );
+				}
+				// If not a string or an array, leave it alone!
+			}
+		} elseif ( is_string( $data ) ) {
+			$data = addslashes( $data );
 		}
 
 		return $data;
