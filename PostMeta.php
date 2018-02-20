@@ -6,7 +6,7 @@ namespace dfwood\WordPress;
  * Class PostMeta
  * @author David Wood <david@davidwood.ninja>
  * @link https://davidwood.ninja/
- * @license GPLv3+
+ * @license GPL-3.0+
  * @package dfwood\WordPress
  */
 class PostMeta {
